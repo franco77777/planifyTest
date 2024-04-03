@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { textGreyLight } from "../../utils/css";
+import { bgCategories, textGreyLight } from "../../utils/css";
 import "./home.css";
 
 const Home = () => {
@@ -95,15 +95,24 @@ const Home = () => {
             {mock.map((a) => {
               return (
                 <li
-                  className={`text-[${textGreyLight}] text-[calc(8px+1.5vw)] `}
+                  className={`text-[${textGreyLight}] text-[calc(8px+1.5vw)]   `}
                 >
-                  <div onClick={() => handleToogle(a.id)}>{a.name}</div>
+                  <div className={`bg-[${bgCategories}] px-[calc(2px+1vw)]`}>
+                    <div onClick={() => handleToogle(a.id)}>{a.name}</div>
+                  </div>
 
-                  <div
-                    className={`duration-1000   unableToogle `}
-                    id={a.id + ""}
-                  >
-                    <div>{a.description}</div>
+                  <div className={`duration-500  unableToogle `} id={a.id + ""}>
+                    <div
+                      className={`border-4 border-[${textGreyLight}] mt-[calc(2px+1vw)]`}
+                    >
+                      <div>{a.description}</div>
+                      <button
+                        type="button"
+                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                      >
+                        Default
+                      </button>
+                    </div>
                   </div>
                 </li>
               );
