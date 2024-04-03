@@ -1,14 +1,22 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import NavBar from "./components/navbar/NavBar";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Home from "./components/home/home";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <h1 className="text-red-500">TEsting</h1>
+      <div className="mx-auto w-[90vw] mt-[2vw]">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
     </>
   );
 }
