@@ -71,11 +71,29 @@ const Home = () => {
   ];
   const handleToogle = (e: number) => {
     const item = document.getElementById(e + "");
+
     const hasClase2 = item?.classList.contains("toogle");
     hasClase2
       ? item?.classList.remove("toogle")
       : item?.classList.add("toogle");
-    console.log(hasClase2);
+    //console.log(hasClase2);
+    const crossButton = document.getElementById("-" + e);
+    const crossAnimation = crossButton.querySelectorAll("span");
+    for (const element of crossAnimation) {
+      const rotationExist = element.classList.contains("rotate");
+      if (rotationExist) {
+        const animationExist = element.classList.contains("rotate2");
+        animationExist
+          ? element.classList.remove("rotate2")
+          : element.classList.add("rotate2");
+      } else {
+        const sencondAnimation = element.classList.contains("getOffCross");
+        sencondAnimation
+          ? element.classList.remove("getOffCross")
+          : element.classList.add("getOffCross");
+      }
+    }
+    //console.log("soy animation", crossAnimation);
 
     //setToogle(!toogle);
   };
@@ -97,6 +115,7 @@ const Home = () => {
             {mock.map((a) => {
               return (
                 <li
+                  key={a.id}
                   className={`text-[${textGreyLight}] text-[calc(8px+1.5vw)]   `}
                 >
                   <div className={`bg-[#f2f5f7] px-[calc(6px+1vw)]`}>
@@ -107,12 +126,12 @@ const Home = () => {
                       <div>{a.name}</div>
                       <button
                         //onClick={() => setShowSideBar()}
-                        name={a.id + ""}
-                        className={`animation  transition-transform duration-500  relative w-[calc(6px+3vw)] h-[calc(6px+3vw)] bg-red-600  ease-in-out rounded-full border-0
+                        id={"-" + a.id}
+                        className={`transition-transform duration-500  relative w-[calc(6px+3vw)] h-[calc(6px+3vw)]  ease-in-out rounded-full border-0 overflow-hidden
                       } `}
                       >
-                        <span className="rounded-md w-full bg-[#3b82f6] absolute h-[calc(2px+0.5vw)] top-[40%] left-0 transition-transform duration-500"></span>
-                        <span className="rounded-md w-7 hidden bg-[#3b82f6]  absolute h-1  left-3.5  top-[34px] transition-transform duration-500"></span>
+                        <span className=" rounded-md w-[calc(7px+2vw)] bg-[#788896] absolute h-[calc(2px+0.5vw)] sm:h-[4px] md:h-[5px] lg:h-[7px] xl:h-[8px] 2xl:h-[10px]  child rotate transition-transform duration-500"></span>
+                        <span className=" rounded-md w-[calc(7px+2vw)] bg-[#788896]  absolute h-[calc(2px+0.5vw)]   sm:h-[4px] md:h-[5px] lg:h-[7px] xl:h-[8px] 2xl:h-[10px] child transition-transform duration-500"></span>
                       </button>
                     </div>
                   </div>
@@ -125,7 +144,7 @@ const Home = () => {
                       <div className="mr-0 ml-auto w-min">
                         <button
                           type="button"
-                          className="py-[calc(2px+0.2vw)] px-[calc(6px+0.2vw)] mb-[calc(1px+1vw)] text-white relative bg-[#788896] hover:bg-gray-600  pointer-events-auto  rounded-sm      "
+                          className="py-[calc(2px+0.2vw)] px-[calc(6px+0.2vw)] mb-[calc(1px+1vw)] text-white relative bg-[#788896] hover:bg-gray-600  pointer-events-auto  rounded-md      "
                         >
                           Seleccionar
                         </button>
