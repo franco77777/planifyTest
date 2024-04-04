@@ -84,8 +84,10 @@ const Home = () => {
       <div
         className={`border-4 border-[${textGreyLight}] mt-[2vw] font-semibold p-[calc(8px+1.5vw)]`}
       >
-        <div className="m-[1vw] flex flex-col gap-[calc(5px+0.5vw)]">
-          <span className={` text-[${textGreyLight}] text-[calc(8px+2vw)]  `}>
+        <div className="m-[1vw] flex flex-col gap-[calc(5px+0.5vw)] ">
+          <span
+            className={` text-[${textGreyLight}] text-[calc(8px+2vw)] px-[calc(4px+1vw)] `}
+          >
             Categorias
           </span>
           <ul className="flex flex-col gap-[calc(5px+0.5vw)] ">
@@ -97,21 +99,37 @@ const Home = () => {
                 <li
                   className={`text-[${textGreyLight}] text-[calc(8px+1.5vw)]   `}
                 >
-                  <div className={`bg-[${bgCategories}] px-[calc(2px+1vw)]`}>
-                    <div onClick={() => handleToogle(a.id)}>{a.name}</div>
+                  <div className={`bg-[#f2f5f7] px-[calc(6px+1vw)]`}>
+                    <div
+                      onClick={() => handleToogle(a.id)}
+                      className="flex justify-between items-center cursor-pointer "
+                    >
+                      <div>{a.name}</div>
+                      <button
+                        //onClick={() => setShowSideBar()}
+                        name={a.id + ""}
+                        className={`animation  transition-transform duration-500  relative w-[calc(6px+3vw)] h-[calc(6px+3vw)] bg-red-600  ease-in-out rounded-full border-0
+                      } `}
+                      >
+                        <span className="rounded-md w-full bg-[#3b82f6] absolute h-[calc(2px+0.5vw)] top-[40%] left-0 transition-transform duration-500"></span>
+                        <span className="rounded-md w-7 hidden bg-[#3b82f6]  absolute h-1  left-3.5  top-[34px] transition-transform duration-500"></span>
+                      </button>
+                    </div>
                   </div>
 
                   <div className={`duration-500  unableToogle `} id={a.id + ""}>
                     <div
-                      className={`border-4 border-[${textGreyLight}] mt-[calc(2px+1vw)]`}
+                      className={`border-4 border-[${textGreyLight}] mt-[calc(2px+1vw)] px-[calc(2px+1vw)]`}
                     >
                       <div>{a.description}</div>
-                      <button
-                        type="button"
-                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                      >
-                        Default
-                      </button>
+                      <div className="mr-0 ml-auto w-min">
+                        <button
+                          type="button"
+                          className="py-[calc(2px+0.2vw)] px-[calc(6px+0.2vw)] mb-[calc(1px+1vw)] text-white relative bg-[#788896] hover:bg-gray-600  pointer-events-auto  rounded-sm      "
+                        >
+                          Seleccionar
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </li>
